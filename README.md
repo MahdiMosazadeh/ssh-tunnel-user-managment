@@ -17,6 +17,14 @@ That Programs Need This Information To Connect :
 - SSH Port
 - Username & Password
 
+Run These Commands For Use It On Debian Base Kernel Like Ubuntu:
+
+- apt install wget -y
+- wget https://github.com/MahdiMosazadeh/ssh-tunnel-user-managment/blob/main/ssh-tunnel-users-managment.sh
+- chmod a+x ssh-tunnel-users-managment.sh
+- ./ssh-tunnel-users-managment.sh
+
+
 Then Use This Script For Manage Your Users :
 
          SSH User Management
@@ -46,3 +54,5 @@ Users Traffic Usage & Managment :
 Exit :
 
          0 : Quit Script
+
+         

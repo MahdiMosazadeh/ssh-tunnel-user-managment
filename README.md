@@ -1,11 +1,27 @@
 # ssh-tunnel-user-managment
 A Simple Scripe For Manage Your SSH Tunnel Users VPN
 
-**************************************
+Add User With This Script Or By Your Self.
+
+Then
+
+Connect Clients With SSH Tunnel Connections Programs Like :
+
+- Matsuri (android)
+- NapsternetV (android & ios)
+- NetMod (Windows)
+  
+That Programs Need This Information To Connect :
+
+- Address Server
+- SSH Port
+- Username & Password
+
+Then Use This Script For Manage Your Users :
+
          SSH User Management
                Options
-**************************************
-
+               
 User Managment :
 
          1 : Add User
@@ -26,3 +42,7 @@ Users Traffic Usage & Managment :
          9 : Show Users Traffic Usage
          10 : Set Traffic Limit For Specific User
          11 : Set Time Limit For Specific User
+         
+Exit :
+
+         0 : Quit Script

@@ -1,0 +1,64 @@
+__________________________________
+1.change port ssh :
+    vim /etc/ssh/sshd_config
+      --> port 33489
+      --> MaxAuthtries 3
+
+__________________________________
+2.create user with limit on login and access to terminal -> create user with permision just use ssh proxy :
+    adduser ALI --shell /usr/sbin/nologin
+
+__________________________________
+3.Create user with expire date (that date in command is expire date) :
+    useradd -e 2023-08-20 ALI
+    passwd ALI
+
+__________________________________
+4.Check and Edit expire date :
+    check --> chage -l ALI
+    Edit  --> chage -E 2023-09-20 ALI (set new date)
+
+__________________________________
+5.Merge command 2 and 3 :
+    useradd -e 2023-08-20 ALI --shell /usr/sbin/nologin && passwd ALI
+
+__________________________________
+6.Set Limit on access number :
+    vim /etc/security/limits.conf
+    (add in the end of code)
+      --> *  hard maxlogins 1
+      OR
+      --> ALI hard maxlogin 1
+
+__________________________________
+7.Set WARP on all on server traffic :
+    https://github.com/yonggekkk/warp-yg
+      bash <(wget -qO- https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh 2> /dev/null)
+    just command :
+    1
+    1
+    1
+
+__________________________________
+8.Ban all IRAN IP :
+    https://github.com/AliDbg/IPBAN
+      bash <(wget -qO- raw.githubusercontent.com/AliDbg/IPBAN/main/ipban.sh) -add OUTPUT -geoip CN,IR -limit DROP
+
+__________________________________
+9.Install UDPGW :
+  sudo wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/daybreakersx/premscript/master/badvpn-udpgw64"
+  sudo touch /etc/rc.local
+  sudo nano /etc/rc.local
+
+----------------------
+#!/bin/sh -e
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+exit 0
+----------------------
+
+  chmod +x /etc/rc.local
+  sudo systemctl status rc-local.service
+  sudo chmod +x /usr/bin/badvpn-udpgw
+  sudo screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+  reboot
+  sudo lsof -i -P -n | grep LISTEN
